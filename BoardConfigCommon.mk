@@ -54,8 +54,11 @@ TARGET_QCOM_MEDIA_VARIANT := caf-new
 # Audio
 BOARD_USES_ALSA_AUDIO := true
 
+# FM
+QCOM_FM_ENABLED := true
+
 # Bluetooth
-BOARD_HAVE_BLUETOOTH := true
+BLUETOOTH_HCI_USE_MCT := true
 BOARD_HAVE_BLUETOOTH_QCOM := true
 
 # Camera
