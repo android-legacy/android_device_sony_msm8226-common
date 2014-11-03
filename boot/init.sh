@@ -39,7 +39,7 @@ busybox sleep 3
 load_image=/sbin/ramdisk.cpio
 
 # boot decision
-if [ -s /dev/keycheck ] || busybox grep -q warmboot=0x77665502 /proc/cmdline ; then
+if [ -s /dev/keycheck ] || busybox grep -q warmboot=0x77665501 /proc/cmdline ; then
 	busybox echo 'RECOVERY BOOT' >>boot.txt
 	# orange led for recoveryboot
 	busybox echo 255 > ${BOOTREC_LED_RED}
