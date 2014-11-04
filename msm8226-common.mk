@@ -162,6 +162,10 @@ ifneq ($(BOARD_HAVE_RADIO),false)
     $(call inherit-product, $(LOCAL_PATH)/radio.mk)
 endif
 
+# Custom dtb tool
+PRODUCT_PACKAGES += \
+    dtbToolM2
+
 # SIM Props
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.radio.apm_sim_not_pwdn=1 \
