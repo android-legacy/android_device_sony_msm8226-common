@@ -4,7 +4,7 @@ uncompressed_ramdisk := $(PRODUCT_OUT)/ramdisk.cpio
 $(uncompressed_ramdisk): $(INSTALLED_RAMDISK_TARGET)
 	zcat $< > $@
 
-INITSH := device/sony/msm8226-common/combinedroot/init.sh
+INITSH := device/sony/msm8226-common/boot/init.sh
 BOOTREC_DEVICE := $(PRODUCT_OUT)/recovery/bootrec-device
 
 KERNEL_CONFIG := $(KERNEL_OUT)/.config
