@@ -115,8 +115,7 @@ PRODUCT_PACKAGES += \
     libnfc_nci_jni \
     NfcNci \
     Tag \
-    com.android.nfc_extras \
-    nfc_nci.msm8226
+    com.android.nfc_extras
 
 # NFCEE access control
 NFCEE_ACCESS_PATH := $(COMMON_PATH)/rootdir/system/etc/nfcee_access.xml
