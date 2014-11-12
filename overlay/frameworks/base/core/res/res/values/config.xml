@@ -129,14 +129,14 @@
     <!-- Default LED off time for notification LED in milliseconds. -->
     <integer name="config_defaultNotificationLedOff">6000</integer>
 
-    <!-- Is the notification LED intrusive? Used to decide if there should be a disable option -->
-    <bool name="config_intrusiveNotificationLed">true</bool>
+    <!-- Is the notification LED intrusive? Used to decide if there should be a disable option
+    <bool name="config_intrusiveNotificationLed">true</bool> -->
 
-    <!-- Is the battery LED intrusive? Used to decide if there should be a disable option -->
-    <bool name="config_intrusiveBatteryLed">true</bool>
+    <!-- Is the battery LED intrusive? Used to decide if there should be a disable option
+    <bool name="config_intrusiveBatteryLed">true</bool> -->
 
-    <!-- Does the battery LED support multiple colors? Used to decide if the user can change the colors -->
-    <bool name="config_multiColorBatteryLed">true</bool>
+    <!-- Can we change the battery color?
+    <bool name="config_multiColorBatteryLed">true</bool> -->
 
     <!-- Is the device capable of hot swapping an UICC Card -->
     <bool name="config_hotswapCapable">true</bool>
@@ -174,15 +174,20 @@
     <bool name="config_useDevInputEventForAudioJack">true</bool>
 
     <!-- Defines the system property to set for performance profile xe: sys.cpu.modes. Leave it
-         blank if the device do not support performance profiles -->
-    <string name="config_perf_profile_prop" translatable="false">sys.perf.profile</string>
+         blank if the device do not support performance profiles
+    <string name="config_perf_profile_prop" translatable="false">sys.perf.profile</string> -->
 
     <!-- When config_perf_profile_prop is defined, this value MUST be the index of
          one of the listes values in frameworks/base/core/res/res/values/cm_arrays.xml
          for "perf_profile_values" array. Leave it blank if the device do not support
-         performance profiles  -->
-    <string name="config_perf_profile_default_entry" translatable="false">1</string>
+         performance profiles 
+    <string name="config_perf_profile_default_entry" translatable="false">1</string> -->
 
     <!-- Configuration to enable non-default PDP during IWLAN -->
     <bool name="config_feature_iwlan_enabled">true</bool>
+    <!-- Make things go fast -->
+    <bool name="config_ui_enableFadingMarquee">false</bool>
+
+    <!-- SD card is hot-pluggable on this platform
+    <bool name="config_batterySdCardAccessibility">true</bool> -->
 </resources>
