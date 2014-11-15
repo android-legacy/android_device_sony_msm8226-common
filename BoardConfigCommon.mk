@@ -11,7 +11,6 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-USE_CAMERA_STUB := true
 
 # inherit from qcom-common
 include device/sony/qcom-common/BoardConfigCommon.mk
@@ -61,6 +60,9 @@ QCOM_FM_ENABLED := true
 # Bluetooth
 BLUETOOTH_HCI_USE_MCT := true
 BOARD_HAVE_BLUETOOTH_QCOM := true
+
+# Camera
+USE_DEVICE_SPECIFIC_CAMERA := true
 
 # Charger
 BOARD_CHARGER_ENABLE_SUSPEND := true
