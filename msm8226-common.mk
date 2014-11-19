@@ -49,6 +49,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     extract_elf_ramdisk
 
+# Audio configuration
+PRODUCT_COPY_FILES += \
+    $(COMMON_PATH)/audio/audio_policy.conf:system/etc/audio_policy.conf
+
 # Audio
 PRODUCT_PACKAGES += \
     audiod \
@@ -99,6 +103,7 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/rootdir/system/etc/sec_config:system/etc/sec_config
+
 
 # Keystore
 PRODUCT_PACKAGES += \
