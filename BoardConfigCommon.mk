@@ -82,6 +82,9 @@ MAX_EGL_CACHE_SIZE := 2048*1024
 # NFC
 BOARD_NFC_CHIPSET := pn547
 
+# RIL
+BOARD_HAS_RIL_LEGACY_PAP := true
+
 # Wifi
 BOARD_HAS_QCOM_WLAN              := true
 BOARD_WLAN_DEVICE                := qcwcn
@@ -110,10 +113,3 @@ TARGET_USERIMAGES_USE_EXT4 := true
 # Recovery
 TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
 BOARD_HAS_NO_SELECT_BUTTON := true
-
-# Include an expanded selection of fonts
-EXTENDED_FONT_FOOTPRINT := true
-
-MALLOC_IMPL := dlmalloc
-
-TARGET_USES_LOGD := false

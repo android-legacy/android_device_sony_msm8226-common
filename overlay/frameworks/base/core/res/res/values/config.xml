@@ -185,4 +185,9 @@
 
     <!-- Configuration to enable non-default PDP during IWLAN -->
     <bool name="config_feature_iwlan_enabled">true</bool>
+    <!-- Make things go fast -->
+    <bool name="config_ui_enableFadingMarquee">false</bool>
+
+    <!-- SD card is hot-pluggable on this platform
+    <bool name="config_batterySdCardAccessibility">true</bool> -->
 </resources>
