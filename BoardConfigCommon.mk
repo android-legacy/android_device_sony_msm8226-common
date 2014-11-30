@@ -18,7 +18,7 @@ include device/sony/qcom-common/BoardConfigCommon.mk
 # inherit from Sony common
 include device/sony/common/BoardConfigCommon.mk
 
-TARGET_SPECIFIC_HEADER_PATH += device/sony/msm8226-common/include
+TARGET_SPECIFIC_HEADER_PATH := device/sony/msm8226-common/include
 
 # Platform
 TARGET_BOOTLOADER_BOARD_NAME := MSM8226
