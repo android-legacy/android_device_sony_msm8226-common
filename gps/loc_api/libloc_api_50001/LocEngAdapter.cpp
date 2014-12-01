@@ -1,4 +1,4 @@
-/* Copyright (c) 2011-2014, The Linux Foundation. All rights reserved.
+/* Copyright (c) 2011-2013, The Linux Foundation. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are
@@ -52,6 +52,22 @@ void LocInternalAdapter::stopFixInt() {
 void LocInternalAdapter::getZppInt() {
     sendMsg(new LocEngGetZpp(mLocEngAdapter));
 }
+void LocInternalAdapter::setUlpProxy(UlpProxyBase* ulp) {
+    struct LocSetUlpProxy : public LocMsg {
+        LocAdapterBase* mAdapter;
+        UlpProxyBase* mUlp;
+        inline LocSetUlpProxy(LocAdapterBase* adapter, UlpProxyBase* ulp) :
+            LocMsg(), mAdapter(adapter), mUlp(ulp) {
+        }
+        virtual void proc() const {
+            LOC_LOGV("%s] ulp %p adapter %p", __func__,
+                     mUlp, mAdapter);
+            mAdapter->setUlpProxy(mUlp);
+        }
+    };
+
+    sendMsg(new LocSetUlpProxy(mLocEngAdapter, ulp));
+}
 
 LocEngAdapter::LocEngAdapter(LOC_API_ADAPTER_EVENT_MASK_T mask,
                              void* owner, ContextBase* context,
@@ -79,23 +95,6 @@ LocEngAdapter::~LocEngAdapter()
     LOC_LOGV("LocEngAdapter deleted");
 }
 
-void LocInternalAdapter::setUlpProxy(UlpProxyBase* ulp) {
-    struct LocSetUlpProxy : public LocMsg {
-        LocAdapterBase* mAdapter;
-        UlpProxyBase* mUlp;
-        inline LocSetUlpProxy(LocAdapterBase* adapter, UlpProxyBase* ulp) :
-            LocMsg(), mAdapter(adapter), mUlp(ulp) {
-        }
-        virtual void proc() const {
-            LOC_LOGV("%s] ulp %p adapter %p", __func__,
-                     mUlp, mAdapter);
-            mAdapter->setUlpProxy(mUlp);
-        }
-    };
-
-    sendMsg(new LocSetUlpProxy(mLocEngAdapter, ulp));
-}
-
 void LocEngAdapter::setUlpProxy(UlpProxyBase* ulp)
 {
     if (ulp == mUlp) {
@@ -103,24 +102,18 @@ void LocEngAdapter::setUlpProxy(UlpProxyBase* ulp)
         //and we get the same object back for UlpProxyBase . Do nothing
         return;
     }
-
+    delete mUlp;
     LOC_LOGV("%s] %p", __func__, ulp);
     if (NULL == ulp) {
-        LOC_LOGE("%s:%d]: ulp pointer is NULL", __func__, __LINE__);
         ulp = new UlpProxyBase();
     }
-
-    if (LOC_POSITION_MODE_INVALID != mUlp->mPosMode.mode) {
-        // need to send this mode and start msg to ULP
-        ulp->sendFixMode(mUlp->mPosMode);
-    }
-
-    if(mUlp->mFixSet) {
-        ulp->sendStartFix();
-    }
-
-    delete mUlp;
     mUlp = ulp;
+
+    if (LOC_POSITION_MODE_INVALID != mFixCriteria.mode) {
+        // need to send this mode and start msg to ULP
+        mUlp->sendFixMode(mFixCriteria);
+        mUlp->sendStartFix();
+    }
 }
 
 void LocInternalAdapter::reportPosition(UlpLocation &location,
@@ -301,3 +294,4 @@ void LocEngAdapter::handleEngineUpEvent()
 {
     sendMsg(new LocEngUp(mOwner));
 }
+
