@@ -14,10 +14,12 @@
 # limitations under the License.
 #
 
-LOCAL_PATH := $(call my-dir)
+ifeq ($(BOARD_VENDOR),oppo)
+ifeq ($(TARGET_BOARD_PLATFORM),msm8974)
 
-ifeq ($(BOARD_VENDOR),sony)
-ifeq ($(TARGET_BOARD_PLATFORM),msm8226)
-include $(call all-subdir-makefiles,$(LOCAL_PATH))
+LOC_PATH := $(call my-dir)
+
+include $(call first-makefiles-under,$(LOC_PATH))
+
 endif
 endif
