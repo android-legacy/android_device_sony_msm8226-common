@@ -12,11 +12,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# inherit from qcom-common
-include device/sony/qcom-common/BoardConfigCommon.mk
-
 # inherit from Sony common
 include device/sony/common/BoardConfigCommon.mk
+
+# inherit from qcom-common
+include device/sony/qcom-common/BoardConfigCommon.mk
 
 TARGET_SPECIFIC_HEADER_PATH += device/sony/msm8226-common/include
 
