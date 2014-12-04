@@ -4,17 +4,32 @@ uncompressed_ramdisk := $(PRODUCT_OUT)/ramdisk.cpio
 $(uncompressed_ramdisk): $(INSTALLED_RAMDISK_TARGET)
 	zcat $< > $@
 
-INITSH := $(LOCAL_PATH)/init.sh
+INITSH := device/sony/eagle/combinedroot/init.sh
 BOOTREC_DEVICE := $(PRODUCT_OUT)/recovery/bootrec-device
 
-DTBTOOL := $(HOST_OUT_EXECUTABLES)/dtbToolCM$(HOST_EXECUTABLE_SUFFIX)
-$(INSTALLED_DTIMAGE_TARGET): $(DTBTOOL) $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr $(INSTALLED_KERNEL_TARGET)
-	$(call pretty,"Target DT image: $@")
-	$(hide) $(DTBTOOL) $(TARGET_DTB_EXTRA_FLAGS) -o $(INSTALLED_DTIMAGE_TARGET) -s $(BOARD_KERNEL_PAGESIZE) -p $(KERNEL_OUT)/scripts/dtc/ $(KERNEL_OUT)/arch/arm/boot/
-	@echo -e ${CL_CYN}"Made DT image: $@"${CL_RST}
+KERNEL_CONFIG := $(KERNEL_OUT)/.config
+DTS_NAMES ?= msm8226 msm8926
+DTS_FILES = $(wildcard $(TOP)/$(KERNEL_SRC)/arch/arm/boot/dts/$(DTS_NAME)*.dts)
+DTS_FILE = $(lastword $(subst /, ,$(1)))
+DTB_FILE = $(addprefix $(KERNEL_OUT)/arch/arm/boot/,$(patsubst %.dts,%.dtb,$(call DTS_FILE,$(1))))
+ZIMG_FILE = $(addprefix $(KERNEL_OUT)/arch/arm/boot/,$(patsubst %.dts,%-zImage,$(call DTS_FILE,$(1))))
+KERNEL_ZIMG = $(KERNEL_OUT)/arch/arm/boot/zImage
+DTC = $(KERNEL_OUT)/scripts/dtc/dtc
 
-$(INSTALLED_BOOTIMAGE_TARGET): $(PRODUCT_OUT)/kernel $(uncompressed_ramdisk) $(recovery_uncompressed_ramdisk) $(INSTALLED_RAMDISK_TARGET) $(INITSH) $(PRODUCT_OUT)/utilities/busybox $(PRODUCT_OUT)/utilities/extract_elf_ramdisk $(MKBOOTIMG) $(MINIGZIP) $(INTERNAL_BOOTIMAGE_FILES) $(INSTALLED_DTIMAGE_TARGET)
-	$(call pretty,"Target boot image: $@")
+define append-dtb
+mkdir -p $(KERNEL_OUT)/arch/arm/boot;\
+$(foreach DTS_NAME, $(DTS_NAMES), \
+   $(foreach d, $(DTS_FILES), \
+      $(DTC) -p 1024 -O dtb -o $(call DTB_FILE,$(d)) $(d); \
+      cat $(KERNEL_ZIMG) $(call DTB_FILE,$(d)) > $(call ZIMG_FILE,$(d));))
+endef
+
+DTBTOOL := $(HOST_OUT_EXECUTABLES)/dtbTool$(HOST_EXECUTABLE_SUFFIX)
+INSTALLED_DTIMAGE_TARGET := $(PRODUCT_OUT)/dt.img
+
+INSTALLED_BOOTIMAGE_TARGET := $(PRODUCT_OUT)/boot.img
+$(INSTALLED_BOOTIMAGE_TARGET): $(PRODUCT_OUT)/kernel $(uncompressed_ramdisk) $(recovery_uncompressed_ramdisk) $(INSTALLED_RAMDISK_TARGET) $(INITSH) $(BOOTREC_DEVICE) $(PRODUCT_OUT)/utilities/busybox $(PRODUCT_OUT)/utilities/extract_elf_ramdisk $(MKBOOTIMG) $(MINIGZIP) $(INTERNAL_BOOTIMAGE_FILES) $(DTBTOOL)
+	$(call pretty,"Boot image: $@")
 
 	$(hide) rm -fr $(PRODUCT_OUT)/combinedroot
 	$(hide) mkdir -p $(PRODUCT_OUT)/combinedroot/sbin
@@ -33,11 +48,16 @@ $(INSTALLED_BOOTIMAGE_TARGET): $(PRODUCT_OUT)/kernel $(uncompressed_ramdisk) $(r
 	$(hide) $(MKBOOTFS) $(PRODUCT_OUT)/combinedroot/ > $(PRODUCT_OUT)/combinedroot.cpio
 	$(hide) cat $(PRODUCT_OUT)/combinedroot.cpio | gzip > $(PRODUCT_OUT)/combinedroot.fs
 
+	$(call append-dtb)
+	$(call pretty,"Target dt image: $(INSTALLED_DTIMAGE_TARGET)")
+	$(hide) $(DTBTOOL) $(TARGET_DTB_EXTRA_FLAGS) -o $(INSTALLED_DTIMAGE_TARGET) -s $(BOARD_KERNEL_PAGESIZE) -p $(KERNEL_OUT)/scripts/dtc/ $(KERNEL_OUT)/arch/arm/boot/
+
 	$(hide) $(MKBOOTIMG) --kernel $(PRODUCT_OUT)/kernel --ramdisk $(PRODUCT_OUT)/combinedroot.fs --cmdline "$(BOARD_KERNEL_CMDLINE)" --base $(BOARD_KERNEL_BASE) --pagesize $(BOARD_KERNEL_PAGESIZE) --dt $(INSTALLED_DTIMAGE_TARGET) $(BOARD_MKBOOTIMG_ARGS) -o $(INSTALLED_BOOTIMAGE_TARGET)
-	@echo -e ${CL_CYN}"Made boot image: $@"${CL_RST}
 
 INSTALLED_RECOVERYIMAGE_TARGET := $(PRODUCT_OUT)/recovery.img
-$(INSTALLED_RECOVERYIMAGE_TARGET): $(MKBOOTIMG) $(recovery_ramdisk) $(recovery_kernel) $(INSTALLED_DTIMAGE_TARGET)
-	@echo -e ${CL_CYN}"----- Making recovery image ------"${CL_RST}
-	$(hide) $(MKBOOTIMG) --kernel $(PRODUCT_OUT)/kernel --ramdisk $(PRODUCT_OUT)/ramdisk-recovery.img --cmdline "$(BOARD_KERNEL_CMDLINE)" --base $(BOARD_KERNEL_BASE) --pagesize $(BOARD_KERNEL_PAGESIZE) --dt $(INSTALLED_DTIMAGE_TARGET) $(BOARD_MKBOOTIMG_ARGS) -o $(INSTALLED_RECOVERYIMAGE_TARGET)
-	@echo -e ${CL_CYN}"Made recovery image: $@"${CL_RST}
+$(INSTALLED_RECOVERYIMAGE_TARGET): $(MKBOOTIMG) \
+	$(recovery_ramdisk) \
+	$(recovery_kernel)
+	@echo ----- Making recovery image ------
+	$(hide) $(MKBOOTIMG) --kernel $(PRODUCT_OUT)/kernel --ramdisk $(PRODUCT_OUT)/ramdisk-recovery.img --cmdline "$(BOARD_KERNEL_CMDLINE)" --base $(BOARD_KERNEL_BASE) --pagesize $(BOARD_KERNEL_PAGESIZE) $(BOARD_MKBOOTIMG_ARGS) -o $(INSTALLED_RECOVERYIMAGE_TARGET)
+	@echo ----- Made recovery image -------- $@
