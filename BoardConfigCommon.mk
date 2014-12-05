@@ -56,7 +56,7 @@ QCOM_FLUENCE_ENABLED := false
 QCOM_ANC_HEADSET_ENABLED := false
 
 # FM
-QCOM_FM_ENABLED := true
+#QCOM_FM_ENABLED := true
 
 # Bluetooth
 BLUETOOTH_HCI_USE_MCT := true
