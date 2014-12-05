@@ -17,6 +17,9 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 # qcom common
 $(call inherit-product, device/sony/qcom-common/qcom-common.mk)
 
+#inherit qcom common sepolicy
+include device/qcom/sepolicy/sepolicy.mk
+
 COMMON_PATH := device/sony/msm8226-common
 
 DEVICE_PACKAGE_OVERLAYS += $(COMMON_PATH)/overlay
