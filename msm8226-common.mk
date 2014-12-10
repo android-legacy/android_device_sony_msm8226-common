@@ -73,6 +73,10 @@ PRODUCT_PACKAGES += \
     copybit.msm8226 \
     memtrack.msm8226
 
+# Light
+PRODUCT_PACKAGES += \
+    lights.msm8226
+
 # Filesystem management tools
 PRODUCT_PACKAGES += \
     e2fsck
