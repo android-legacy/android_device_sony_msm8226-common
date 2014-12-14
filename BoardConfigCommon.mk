@@ -24,6 +24,7 @@ TARGET_SPECIFIC_HEADER_PATH += device/sony/msm8226-common/include
 TARGET_BOOTLOADER_BOARD_NAME := MSM8226
 TARGET_BOARD_PLATFORM := msm8226
 BOARD_VENDOR_PLATFORM := yukon
+TARGET_USE_QCOM_BIONIC_OPTIMIZATION := true
 
 # Architecture
 # Purposefully krait due to lack of cortex-a7 optimizations in clang
@@ -33,12 +34,11 @@ TARGET_CPU_VARIANT := krait
 TARGET_GLOBAL_CFLAGS += -mfpu=neon-vfpv4 -mfloat-abi=softfp
 TARGET_GLOBAL_CPPFLAGS += -mfpu=neon-vfpv4 -mfloat-abi=softfp
 COMMON_GLOBAL_CFLAGS += -D__ARM_USE_PLD -D__ARM_CACHE_LINE_SIZE=64
-COMMON_GLOBAL_CFLAGS += -D_ION_HEAP_MASK_COMPATIBILITY_WA
 
 # Kernel information
 BOARD_KERNEL_BASE     := 0x00000000
 BOARD_KERNEL_PAGESIZE := 2048
-BOARD_KERNEL_CMDLINE  := console=ttyHSL0,115200,n8 androidboot.console=ttyHSL0 androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x37
+BOARD_KERNEL_CMDLINE  := console=ttyHSL0,115200,n8 androidboot.console=ttyHSL0 androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x37 androidboot.selinux=permissive
 BOARD_MKBOOTIMG_ARGS  := --ramdisk_offset 0x02000000 --tags_offset 0x01E00000
 BOARD_KERNEL_SEPARATED_DT := true
 BOARD_CUSTOM_BOOTIMG_MK := device/sony/msm8226-common/boot/custombootimg.mk
@@ -48,15 +48,18 @@ BOARD_USES_QCOM_HARDWARE := true
 BOARD_USES_QC_TIME_SERVICES := true
 TARGET_USES_QCOM_BSP := true
 TARGET_ENABLE_QC_AV_ENHANCEMENTS := true
-TARGET_QCOM_AUDIO_VARIANT := caf
-TARGET_QCOM_DISPLAY_VARIANT := caf
-TARGET_QCOM_MEDIA_VARIANT := caf
+TARGET_USE_QCOM_BIONIC_OPTIMIZATION := true
+TARGET_QCOM_AUDIO_VARIANT := caf-bfam
+TARGET_QCOM_DISPLAY_VARIANT := caf-bfam
+TARGET_QCOM_MEDIA_VARIANT := caf-bfam
 COMMON_GLOBAL_CFLAGS += -DQCOM_HARDWARE
 
-# Audio
-BOARD_USES_ALSA_AUDIO := true
-QCOM_FLUENCE_ENABLED := false
-QCOM_ANC_HEADSET_ENABLED := false
+# audio
+BOARD_USES_ALSA_AUDIO:= true
+AUDIO_FEATURE_ENABLED_FLUENCE := true
+AUDIO_FEATURE_ENABLED_USBAUDIO := true
+AUDIO_FEATURE_ENABLED_COMPRESS_CAPTURE := true
+BOARD_HAVE_NEW_QCOM_CSDCLIENT := true
 
 # FM
 QCOM_FM_ENABLED := true
