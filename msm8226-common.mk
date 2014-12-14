@@ -19,6 +19,9 @@ $(call inherit-product, device/sony/qcom-common/qcom-common.mk)
 
 COMMON_PATH := device/sony/msm8226-common
 
+#inherit qcom common sepolicy
+include device/qcom/sepolicy/sepolicy.mk
+
 DEVICE_PACKAGE_OVERLAYS += $(COMMON_PATH)/overlay
 
 # Permissions
@@ -172,10 +175,15 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.loc.nlp_name=com.qualcomm.services.location \
     ro.gps.agps_provider=1
 
+# Qcom
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.qc.sdk.gestures.camera=false \
+    camera2.portability.force_api=1
+
 # SIM Props
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.radio.apm_sim_not_pwdn=1 \
 
 # msm8226 common
 $(call inherit-product, vendor/sony/msm8226-common/msm8226-common-vendor.mk)
-
+$(call inherit-product, frameworks/native/build/phone-xxhdpi-2048-hwui-memory.mk)
