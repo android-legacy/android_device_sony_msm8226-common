@@ -24,6 +24,7 @@ TARGET_SPECIFIC_HEADER_PATH += device/sony/msm8226-common/include
 TARGET_BOOTLOADER_BOARD_NAME := MSM8226
 TARGET_BOARD_PLATFORM := msm8226
 BOARD_VENDOR_PLATFORM := yukon
+TARGET_USE_QCOM_BIONIC_OPTIMIZATION := true
 
 # Architecture
 # Purposefully krait due to lack of cortex-a7 optimizations in clang
