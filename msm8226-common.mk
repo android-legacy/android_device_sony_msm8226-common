@@ -21,6 +21,22 @@ COMMON_PATH := device/sony/msm8226-common
 
 DEVICE_PACKAGE_OVERLAYS += $(COMMON_PATH)/overlay
 
+SONY_ROOT:=device/sony/msm8226-common/rootdir
+
+PRODUCT_COPY_FILES += \
+    $(SONY_ROOT)/ueventd.yukon.rc:root/ueventd.yukon.rc \
+    $(SONY_ROOT)/init.yukon.rc:root/init.yukon.rc \
+    $(SONY_ROOT)/init.yukon.usb.rc:root/init.yukon.usb.rc \
+    $(SONY_ROOT)/init.yukon.pwr.rc:root/init.yukon.pwr.rc \
+    $(SONY_ROOT)/system/usr/keylayout/gpio-keys.kl:system/usr/keylayout/gpio-keys.kl \
+    $(SONY_ROOT)/system/etc/wifi/wpa_supplicant_overlay.conf:system/etc/wifi/wpa_supplicant_overlay.conf \
+    $(SONY_ROOT)/system/etc/wifi/p2p_supplicant_overlay.conf:system/etc/wifi/p2p_supplicant_overlay.conf \
+    $(SONY_ROOT)/system/etc/init.yukon.bt.sh:system/etc/init.yukon.bt.sh \
+    $(SONY_ROOT)/system/etc/gps.conf:system/etc/gps.conf \
+    $(SONY_ROOT)/system/etc/audio_policy.conf:system/etc/audio_policy.conf \
+    $(SONY_ROOT)/system/etc/media_codecs.xml:system/etc/media_codecs.xml \
+    $(SONY_ROOT)/system/etc/media_profiles.xml:system/etc/media_profiles.xml
+
 # Permissions
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml \
@@ -93,16 +109,6 @@ PRODUCT_PACKAGES += \
     resize2fs \
     setup_fs
 
-# FM Radio
-PRODUCT_COPY_FILES += \
-    $(COMMON_PATH)/rootdir/system/etc/init.qcom.fm.sh:system/etc/init.qcom.fm.sh
-
-PRODUCT_PACKAGES += \
-    qcom.fmradio \
-    libqcomfm_jni \
-    FM2 \
-    FMRecord
-
 # GPS
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/gps/flp.conf:system/etc/flp.conf \
@@ -114,31 +120,15 @@ PRODUCT_PACKAGES += \
     com.qualcomm.location \
     gps.msm8226
 
-PRODUCT_COPY_FILES += \
-    $(COMMON_PATH)/rootdir/system/etc/sec_config:system/etc/sec_config
-
 # Keystore
 PRODUCT_PACKAGES += \
     keystore.msm8226
 
 # NFC packages
 PRODUCT_PACKAGES += \
-    libnfc-nci \
-    libnfc_nci_jni \
-    NfcNci \
-    Tag \
     com.android.nfc_extras \
-    nfc_nci.msm8226
-
-# NFCEE access control
-NFCEE_ACCESS_PATH := $(COMMON_PATH)/rootdir/system/etc/nfcee_access.xml
-
-PRODUCT_COPY_FILES += \
-    $(COMMON_PATH)/rootdir/system/etc/nfcee_access.xml:system/etc/nfcee_access.xml
-
-# Time
-PRODUCT_PACKAGES += \
-    libtime_genoff
+    NfcNci \
+    Tag
 
 # USB
 PRODUCT_PACKAGES += \
@@ -148,13 +138,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     mac-update \
     wcnss_service
-
-PRODUCT_COPY_FILES += \
-    $(COMMON_PATH)/rootdir/system/etc/wifi/wpa_supplicant_overlay.conf:system/etc/wifi/wpa_supplicant_overlay.conf \
-    $(COMMON_PATH)/rootdir/system/etc/wifi/p2p_supplicant_overlay.conf:system/etc/wifi/p2p_supplicant_overlay.conf
-
-PRODUCT_COPY_FILES += \
-    $(COMMON_PATH)/rootdir/system/etc/init.qcom.wifi.sh:system/etc/init.qcom.wifi.sh \
 
 # Set default USB interface
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
