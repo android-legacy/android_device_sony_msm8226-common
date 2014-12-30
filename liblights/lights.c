@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-#define LOG_TAG "lights.yukon"
+#define LOG_TAG "lights.msm8226"
 
 #include <cutils/log.h>
 #include <stdint.h>
