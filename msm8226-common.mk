@@ -37,92 +37,66 @@ PRODUCT_COPY_FILES += \
     $(SONY_ROOT)/system/etc/media_codecs.xml:system/etc/media_codecs.xml \
     $(SONY_ROOT)/system/etc/media_profiles.xml:system/etc/media_profiles.xml
 
-# Permissions
+# Copy extra files
 PRODUCT_COPY_FILES += \
-    frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml \
-    frameworks/native/data/etc/android.hardware.bluetooth_le.xml:system/etc/permissions/android.hardware.bluetooth_le.xml \
     frameworks/native/data/etc/android.hardware.camera.flash-autofocus.xml:system/etc/permissions/android.hardware.camera.flash-autofocus.xml \
     frameworks/native/data/etc/android.hardware.camera.front.xml:system/etc/permissions/android.hardware.camera.front.xml \
-    frameworks/native/data/etc/android.hardware.location.gps.xml:system/etc/permissions/android.hardware.location.gps.xml \
-    frameworks/native/data/etc/android.hardware.nfc.hce.xml:system/etc/permissions/android.hardware.nfc.hce.xml \
-    frameworks/native/data/etc/android.hardware.nfc.xml:system/etc/permissions/android.hardware.nfc.xml \
-    frameworks/native/data/etc/android.hardware.sensor.light.xml:system/etc/permissions/android.hardware.sensor.light.xml \
-    frameworks/native/data/etc/android.hardware.sensor.proximity.xml:system/etc/permissions/android.hardware.sensor.proximity.xml \
-    frameworks/native/data/etc/android.hardware.sensor.stepcounter.xml:system/etc/permissions/android.hardware.sensor.stepcounter.xml \
-    frameworks/native/data/etc/android.hardware.sensor.stepdetector.xml:system/etc/permissions/android.hardware.sensor.stepdetector.xml \
     frameworks/native/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml \
+    frameworks/native/data/etc/android.hardware.location.gps.xml:system/etc/permissions/android.hardware.location.gps.xml \
     frameworks/native/data/etc/android.hardware.touchscreen.multitouch.jazzhand.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.jazzhand.xml \
-    frameworks/native/data/etc/android.hardware.usb.accessory.xml:system/etc/permissions/android.hardware.usb.accessory.xml \
-    frameworks/native/data/etc/android.hardware.usb.host.xml:system/etc/permissions/android.hardware.usb.host.xml \
-    frameworks/native/data/etc/android.hardware.wifi.direct.xml:system/etc/permissions/android.hardware.wifi.direct.xml \
     frameworks/native/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
+    frameworks/native/data/etc/android.hardware.wifi.direct.xml:system/etc/permissions/android.hardware.wifi.direct.xml \
+    frameworks/native/data/etc/android.hardware.sensor.compass.xml:system/etc/permissions/android.hardware.sensor.compass.xml \
+    frameworks/native/data/etc/android.hardware.sensor.proximity.xml:system/etc/permissions/android.hardware.sensor.proximity.xml \
+    frameworks/native/data/etc/android.hardware.sensor.light.xml:system/etc/permissions/android.hardware.sensor.light.xml \
+    frameworks/native/data/etc/android.hardware.sensor.accelerometer.xml:system/etc/permissions/android.hardware.sensor.accelerometer.xml \
+    frameworks/native/data/etc/android.hardware.usb.accessory.xml:system/etc/permissions/android.hardware.usb.accessory.xml \
     frameworks/native/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml \
-    frameworks/native/data/etc/com.android.nfc_extras.xml:system/etc/permissions/com.android.nfc_extras.xml \
-    frameworks/native/data/etc/com.nxp.mifare.xml:system/etc/permissions/com.nxp.mifare.xml \
-    packages/wallpapers/LivePicker/android.software.live_wallpaper.xml:system/etc/permissions/android.software.live_wallpaper.xml \
+    frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml
+
+# NFC
+PRODUCT_COPY_FILES += \
+    $(SONY_ROOT)/system/etc/libnfc-nxp.conf:system/etc/libnfc-nxp.conf \
+    $(SONY_ROOT)/system/etc/nfcee_access.xml:system/etc/nfcee_access.xml \
+    frameworks/native/data/etc/android.hardware.nfc.xml:system/etc/permissions/android.hardware.nfc.xml \
+    frameworks/native/data/etc/android.hardware.nfc.hce.xml:system/etc/permissions/android.hardware.nfc.hce.xml \
+    frameworks/native/data/etc/com.android.nfc_extras.xml:system/etc/permissions/com.android.nfc_extras.xml
 
 # Recovery
 PRODUCT_PACKAGES += \
     extract_elf_ramdisk
 
-# Audio
+#Audio
 PRODUCT_PACKAGES += \
-    audiod \
     audio.a2dp.default \
     audio.primary.msm8226 \
     audio.r_submix.default \
     audio.usb.default \
-    audio_policy.msm8226
-
-PRODUCT_PACKAGES += \
     libaudio-resampler \
-    libqcompostprocbundle \
-    libqcomvisualizer \
-    libqcomvoiceprocessing \
-    tinymix
+    libacdbloader \
+    libacdbmapper \
+    libaudcal \
+    libaudioalsa \
+    libdiag
+
+# for audio.primary.msm8226
+PRODUCT_PACKAGES += \
+    libtinyalsa \
+    libtinycompress \
+    libaudioroute
+
+#GFX
+PRODUCT_PACKAGES += \
+    gralloc.msm8226 \
+    hwcomposer.msm8226 \
+    memtrack.msm8226 \
+    libgenlock \
+    libqdutils \
+    libqdMetaData
 
 # Lights wrapper
 PRODUCT_PACKAGES += \
     lights.qcom
-
-# Media
-PRODUCT_COPY_FILES += \
-    frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:system/etc/media_codecs_google_audio.xml \
-    frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml:system/etc/media_codecs_google_telephony.xml \
-    frameworks/av/media/libstagefright/data/media_codecs_google_video.xml:system/etc/media_codecs_google_video.xml \
-    $(COMMON_PATH)/media_codecs.xml:system/etc/media_codecs.xml
-
-# Display
-PRODUCT_PACKAGES += \
-    hwcomposer.msm8226 \
-    gralloc.msm8226 \
-    copybit.msm8226 \
-    memtrack.msm8226
-
-# Filesystem management tools
-PRODUCT_PACKAGES += \
-    e2fsck \
-    fibmap.f2fs \
-    fsck.f2fs \
-    make_ext4fs \
-    mkfs.f2fs \
-    resize2fs \
-    setup_fs
-
-# GPS
-PRODUCT_COPY_FILES += \
-    $(COMMON_PATH)/gps/flp.conf:system/etc/flp.conf \
-    $(COMMON_PATH)/gps/gps.conf:system/etc/gps.conf \
-    $(COMMON_PATH)/gps/izat.conf:system/etc/izat.conf \
-    $(COMMON_PATH)/gps/sap.conf:system/etc/sap.conf
-
-PRODUCT_PACKAGES += \
-    com.qualcomm.location \
-    gps.msm8226
-
-# Keystore
-PRODUCT_PACKAGES += \
-    keystore.msm8226
 
 # NFC packages
 PRODUCT_PACKAGES += \
@@ -130,34 +104,56 @@ PRODUCT_PACKAGES += \
     NfcNci \
     Tag
 
-# USB
+# Power
 PRODUCT_PACKAGES += \
+    power.yukon
+
+#GPS
+PRODUCT_PACKAGES += \
+    libloc_api_v02 \
+    libloc_adapter \
+    libloc_eng \
+    libgps.utils \
+    gps.msm8226
+
+#Wifi
+PRODUCT_PACKAGES += \
+    hostapd \
+    libwpa_client \
+    wpa_supplicant \
+    wpa_supplicant.conf
+
+#Misc
+PRODUCT_PACKAGES += \
+    libmiscta \
+    libta \
+    tad_static \
+    rmt_storage \
+    ta_qmi_service \
+    ta2bin
+
+#OSS
+PRODUCT_PACKAGES += \
+    thermanager \
+    wcnss_addr \
+    bt_addr
+
+#Charger
+PRODUCT_PACKAGES += \
+    charger \
+    charger_res_images \
+
+PRODUCT_PACKAGES += \
+    librs_jni \
     com.android.future.usb.accessory
 
-# WiFi
+# Filesystem management tools
 PRODUCT_PACKAGES += \
-    mac-update \
-    wcnss_service
+    e2fsck
 
-# Set default USB interface
-PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
-    persist.sys.usb.config=mtp
-
-# Bluetooth
+# Platform specific properties
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.qualcomm.bt.hci_transport=smd
-
-# GPS
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.qc.sdk.izat.premium_enabled=1 \
-    ro.qc.sdk.izat.service_mask=0x0 \
-    persist.gps.qc_nlp_in_use=1 \
-    persist.loc.nlp_name=com.qualcomm.services.location \
-    ro.gps.agps_provider=1
-
-# SIM Props
-PRODUCT_PROPERTY_OVERRIDES += \
-    persist.radio.apm_sim_not_pwdn=1 \
 
 # msm8226 common
 $(call inherit-product, vendor/sony/msm8226-common/msm8226-common-vendor.mk)
