@@ -67,7 +67,7 @@ PRODUCT_PACKAGES += \
 
 # Lights wrapper
 PRODUCT_PACKAGES += \
-    lights.qcom
+    lights.msm8226
 
 # Media
 PRODUCT_COPY_FILES += \
