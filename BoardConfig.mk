@@ -38,6 +38,7 @@ BOARD_KERNEL_BOOTIMG := true
 BOARD_KERNEL_SEPARATED_DT := true
 BOARD_CUSTOM_BOOTIMG_MK := device/sony/msm8226-common/boot/custombootimg.mk
 BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x02000000 --tags_offset 0x01E00000
+TARGET_DTB_EXTRA_FLAGS := --force-v2
 
 BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.console=ttyHSL0 androidboot.hardware=yukon user_debug=31 msm_rtb.filter=0x37 androidboot.selinux=permissive
 
