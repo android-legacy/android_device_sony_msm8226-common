@@ -114,9 +114,25 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/rootdir/system/etc/sec_config:system/etc/sec_config
 
-# Keystore
+#Misc
 PRODUCT_PACKAGES += \
-    keystore.msm8226
+    libmiscta \
+    libta \
+    tad_static \
+    rmt_storage \
+    ta_qmi_service \
+    ta2bin
+
+#OSS
+PRODUCT_PACKAGES += \
+    thermanager \
+    wcnss_addr \
+    bt_addr
+
+#Charger
+PRODUCT_PACKAGES += \
+    charger \
+    charger_res_images
 
 # NFC packages
 PRODUCT_PACKAGES += \
