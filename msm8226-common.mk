@@ -102,6 +102,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     lights.msm8226
 
+# Time
+PRODUCT_PACKAGES += \
+    libtime_genoff
+
 #GPS
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/rootdir/system/etc/gps.conf:system/etc/gps.conf
