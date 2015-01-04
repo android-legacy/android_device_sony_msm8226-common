@@ -100,15 +100,15 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     lights.msm8226
 
-# GPS
+#GPS
 PRODUCT_COPY_FILES += \
-    $(COMMON_PATH)/gps/flp.conf:system/etc/flp.conf \
-    $(COMMON_PATH)/gps/gps.conf:system/etc/gps.conf \
-    $(COMMON_PATH)/gps/izat.conf:system/etc/izat.conf \
-    $(COMMON_PATH)/gps/sap.conf:system/etc/sap.conf
+    $(COMMON_PATH)/rootdir/system/etc/gps.conf:system/etc/gps.conf
 
 PRODUCT_PACKAGES += \
-    com.qualcomm.location \
+    libloc_api_v02 \
+    libloc_adapter \
+    libloc_eng \
+    libgps.utils \
     gps.msm8226
 
 PRODUCT_COPY_FILES += \
@@ -159,14 +159,6 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 # Bluetooth
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.qualcomm.bt.hci_transport=smd
-
-# GPS
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.qc.sdk.izat.premium_enabled=1 \
-    ro.qc.sdk.izat.service_mask=0x0 \
-    persist.gps.qc_nlp_in_use=1 \
-    persist.loc.nlp_name=com.qualcomm.services.location \
-    ro.gps.agps_provider=1
 
 # SIM Props
 PRODUCT_PROPERTY_OVERRIDES += \
