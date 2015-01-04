@@ -121,5 +121,8 @@ EXTENDED_FONT_FOOTPRINT := true
 # Memory management
 MALLOC_IMPL := dlmalloc
 
+# Logd
+TARGET_USES_LOGD := false
+
 # Recovery
 TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
