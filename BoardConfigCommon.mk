@@ -44,7 +44,6 @@ BOARD_CUSTOM_BOOTIMG_MK := device/sony/msm8226-common/boot/custombootimg.mk
 
 # Qualcomm
 BOARD_USES_QCOM_HARDWARE := true
-BOARD_USES_QC_TIME_SERVICES := true
 TARGET_USE_QCOM_BIONIC_OPTIMIZATION := true
 TARGET_USES_QCOM_BSP := true
 TARGET_QCOM_AUDIO_VARIANT := caf-bfam
