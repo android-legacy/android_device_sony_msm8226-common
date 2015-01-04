@@ -55,19 +55,21 @@ PRODUCT_PACKAGES += \
 
 # Audio
 PRODUCT_PACKAGES += \
-    audiod \
     audio.a2dp.default \
     audio.primary.msm8226 \
     audio.r_submix.default \
     audio.usb.default \
-    audio_policy.msm8226
+    libaudio-resampler \
+    libacdbloader \
+    libacdbmapper \
+    libaudcal \
+    libaudioalsa \
+    libdiag
 
 PRODUCT_PACKAGES += \
-    libaudio-resampler \
-    libqcompostprocbundle \
-    libqcomvisualizer \
-    libqcomvoiceprocessing \
-    tinymix
+    libtinyalsa \
+    libtinycompress \
+    libaudioroute
 
 # Display
 PRODUCT_PACKAGES += \
@@ -136,11 +138,9 @@ PRODUCT_PACKAGES += \
 
 # NFC packages
 PRODUCT_PACKAGES += \
-    libnfc-nci \
-    libnfc_nci_jni \
+    com.android.nfc_extras \
     NfcNci \
-    Tag \
-    com.android.nfc_extras
+    Tag
 
 # NFCEE access control
 NFCEE_ACCESS_PATH := $(COMMON_PATH)/rootdir/system/etc/nfcee_access.xml
@@ -148,13 +148,14 @@ NFCEE_ACCESS_PATH := $(COMMON_PATH)/rootdir/system/etc/nfcee_access.xml
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/rootdir/system/etc/nfcee_access.xml:system/etc/nfcee_access.xml
 
-# Time
-PRODUCT_PACKAGES += \
-    libtime_genoff
-
 # USB
 PRODUCT_PACKAGES += \
+    librs_jni \
     com.android.future.usb.accessory
+
+# Platform specific properties
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.qualcomm.bt.hci_transport=smd
 
 # WiFi
 PRODUCT_PACKAGES += \
