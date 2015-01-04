@@ -106,6 +106,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     libtime_genoff
 
+# Power
+PRODUCT_PACKAGES += \
+    power.msm8226
+
 #GPS
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/rootdir/system/etc/gps.conf:system/etc/gps.conf
@@ -119,6 +123,13 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/rootdir/system/etc/sec_config:system/etc/sec_config
+
+#Wifi
+PRODUCT_PACKAGES += \
+    hostapd \
+    libwpa_client \
+    wpa_supplicant \
+    wpa_supplicant.conf
 
 #Misc
 PRODUCT_PACKAGES += \
@@ -184,3 +195,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # SIM Props
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.radio.apm_sim_not_pwdn=1
+
+# QC Perf
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.vendor.extension_library=/vendor/lib/libqc-opt.so
