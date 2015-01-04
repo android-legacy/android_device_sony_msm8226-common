@@ -96,6 +96,10 @@ PRODUCT_PACKAGES += \
     FM2 \
     FMRecord
 
+# Light
+PRODUCT_PACKAGES += \
+    lights.msm8226
+
 # GPS
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/gps/flp.conf:system/etc/flp.conf \
