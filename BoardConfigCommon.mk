@@ -76,7 +76,7 @@ BOARD_CHARGER_ENABLE_SUSPEND := true
 # Dumpstate
 BOARD_LIB_DUMPSTATE := libdumpstate.sony
 
-# GPS definitions for Qualcomm solution
+# GPS
 BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := $(TARGET_BOARD_PLATFORM)
 TARGET_NO_RPC := true
 
