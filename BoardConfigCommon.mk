@@ -85,6 +85,7 @@ OVERRIDE_RS_DRIVER := libRSDriver_adreno.so
 MAX_EGL_CACHE_KEY_SIZE := 12*1024
 MAX_EGL_CACHE_SIZE := 2048*1024
 BOARD_EGL_CFG := device/sony/msm8226-common/rootdir/system/lib/egl/egl.cfg
+TARGET_RUNNING_WITHOUT_SYNC_FRAMEWORK := true
 
 # NFC
 BOARD_NFC_CHIPSET := pn547
