@@ -104,7 +104,9 @@ PRODUCT_PACKAGES := \
 PRODUCT_PACKAGES += \
     com.android.nfc_extras \
     NfcNci \
-    Tag
+    Tag \
+    nfc_nci.pn54x.default
+
 
 # Power
 PRODUCT_PACKAGES += \
