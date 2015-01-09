@@ -84,7 +84,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     libtime_genoff
 
-#GFX
+# GFX
 PRODUCT_PACKAGES += \
     gralloc.msm8226 \
     hwcomposer.msm8226 \
@@ -93,9 +93,13 @@ PRODUCT_PACKAGES += \
     libqdutils \
     libqdMetaData
 
-#lights
+# lights
 PRODUCT_PACKAGES += \
     lights.yukon
+
+# OmniTorch
+PRODUCT_PACKAGES := \
+    OmniTorch
 
 # NFC packages
 PRODUCT_PACKAGES += \
