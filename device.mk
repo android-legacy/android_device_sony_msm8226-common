@@ -12,6 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+$(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
+
 # qcom common
 $(call inherit-product, device/sony/qcom-common/qcom-common.mk)
 
@@ -163,6 +165,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # QC Perf
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.vendor.extension_library=/vendor/lib/libqc-opt.so
+
+#inherit common sepolicy
+$(call inherit-product, device/qcom/sepolicy/sepolicy.mk)
 
 # msm8226 common
 $(call inherit-product, vendor/sony/msm8226-common/msm8226-common-vendor.mk)
