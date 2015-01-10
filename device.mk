@@ -82,11 +82,7 @@ PRODUCT_PACKAGES += \
     libtinycompress \
     libaudioroute
 
-# Time
-PRODUCT_PACKAGES += \
-    libtime_genoff
-
-# GFX
+# Display
 PRODUCT_PACKAGES += \
     hwcomposer.msm8226 \
     gralloc.msm8226 \
@@ -157,6 +153,10 @@ PRODUCT_PACKAGES += \
 # Extract recovery ramdisks
 PRODUCT_PACKAGES += \
     extract_elf_ramdisk
+
+# Time
+PRODUCT_PACKAGES += \
+    libtime_genoff
 
 # Platform specific properties
 PRODUCT_PROPERTY_OVERRIDES += \
