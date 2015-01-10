@@ -12,10 +12,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+include device/sony/common/BoardConfigCommon.mk
+
 # inherit from qcom-common
 include device/sony/qcom-common/BoardConfigCommon.mk
-
-include device/sony/common/BoardConfigCommon.mk
 
 TARGET_ARCH := arm
 TARGET_ARCH_VARIANT := armv7-a-neon

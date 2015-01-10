@@ -17,8 +17,6 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 # qcom common
 $(call inherit-product, device/sony/qcom-common/qcom-common.mk)
 
-SOMC_PLATFORM := yukon
-
 DEVICE_PACKAGE_OVERLAYS += \
     device/sony/msm8226-common/overlay
 
@@ -82,11 +80,7 @@ PRODUCT_PACKAGES += \
     libtinycompress \
     libaudioroute
 
-# Time
-PRODUCT_PACKAGES += \
-    libtime_genoff
-
-# GFX
+# Display
 PRODUCT_PACKAGES += \
     hwcomposer.msm8226 \
     gralloc.msm8226 \
@@ -157,6 +151,10 @@ PRODUCT_PACKAGES += \
 # Extract recovery ramdisks
 PRODUCT_PACKAGES += \
     extract_elf_ramdisk
+
+# Time
+PRODUCT_PACKAGES += \
+    libtime_genoff
 
 # Platform specific properties
 PRODUCT_PROPERTY_OVERRIDES += \
