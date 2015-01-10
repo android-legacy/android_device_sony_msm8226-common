@@ -89,10 +89,7 @@ PRODUCT_PACKAGES += \
     hwcomposer.msm8226 \
     gralloc.msm8226 \
     copybit.msm8226 \
-    memtrack.msm8226 \
-    libgenlock \
-    libqdutils \
-    libqdMetaData
+    memtrack.msm8226
 
 # lights
 PRODUCT_PACKAGES += \
