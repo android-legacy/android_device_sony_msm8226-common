@@ -90,6 +90,8 @@ WIFI_DRIVER_FW_PATH_P2P := "p2p"
 WIFI_DRIVER_FW_PATH_STA := "sta"
 WPA_SUPPLICANT_VERSION := VER_0_8_X
 
+BOARD_USE_SONY_MACUPDATE := true
+
 # BT definitions for Qualcomm solution
 BLUETOOTH_HCI_USE_MCT := true
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/sony/msm8226-common/bluetooth
