@@ -5,7 +5,7 @@ $(uncompressed_ramdisk): $(INSTALLED_RAMDISK_TARGET)
 	zcat $< > $@
 
 INITSH := device/sony/msm8226-common/boot/init.sh
-BOOTREC_DEVICE := device/sony/msm8226-common/boot/bootrec-device
+BOOTREC_DEVICE := $(PRODUCT_OUT)/recovery/bootrec-device
 
 KERNEL_CONFIG := $(KERNEL_OUT)/.config
 DTS_NAMES ?= msm8926-yukon_eagle-720p-mtp
