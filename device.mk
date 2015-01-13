@@ -73,14 +73,17 @@ PRODUCT_PACKAGES += \
     libacdbloader \
     libacdbmapper \
     libaudcal \
-    libaudioalsa \
     libdiag
 
 # for audio.primary.msm8226
 PRODUCT_PACKAGES += \
     libtinyalsa \
     libtinycompress \
-    libaudioroute
+    libaudioroute \
+    audiod \
+    libqcompostprocbundle \
+    libqcomvisualizer \
+    libqcomvoiceprocessing
 
 # Time
 PRODUCT_PACKAGES += \
