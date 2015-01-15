@@ -111,6 +111,9 @@ PRODUCT_PACKAGES += \
     Tag \
     nfc_nci.pn54x.default
 
+# WIFI MAC update
+PRODUCT_PACKAGES += \
+    mac-update
 
 # Power
 PRODUCT_PACKAGES += \
