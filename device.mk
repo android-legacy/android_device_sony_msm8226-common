@@ -115,6 +115,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     mac-update
 
+# BT
+PRODUCT_PACKAGES += \
+    hci_qcomm_init
+
 # Power
 PRODUCT_PACKAGES += \
     power.qcom
