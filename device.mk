@@ -65,11 +65,10 @@ PRODUCT_COPY_FILES += \
 
 #Audio
 PRODUCT_PACKAGES += \
+    audio.primary.msm8960 \
     audio.a2dp.default \
-    audio_policy.msm8226 \
-    audio.primary.msm8226 \
-    audio.r_submix.default \
     audio.usb.default \
+    audio.r_submix.default \
     libaudio-resampler \
     libacdbloader \
     libacdbmapper \
@@ -84,7 +83,8 @@ PRODUCT_PACKAGES += \
     audiod \
     libqcompostprocbundle \
     libqcomvisualizer \
-    libqcomvoiceprocessing
+    libqcomvoiceprocessing \
+    tinymix
 
 # Time
 PRODUCT_PACKAGES += \
@@ -177,16 +177,12 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Audio Configuration
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.qc.sdk.audio.fluencetype=fluence \
-    persist.audio.fluence.voicecall=true \
-    af.resampler.quality=4 \
-    audio.offload.buffer.size.kb=32 \
-    audio.offload.gapless.enabled=true \
-    use.voice.path.for.pcm.voip=true \
-    av.offload.enable=true \
-    av.streaming.offload.enable=true \
-    audio.offload.pcm.enable=true \
-    persist.sys.media.use-awesome=true
+    persist.audio.fluence.mode=endfire \
+    persist.audio.handset.mic=analog \
+    persist.audio.lowlatency.rec=false \
+    ro.qc.sdk.audio.fluencetype=none \
+    lpa.decode=true \
+    qcom.hw.aac.encoder=true
 
 # msm8226 common
 $(call inherit-product, vendor/sony/msm8226-common/msm8226-common-vendor.mk)
