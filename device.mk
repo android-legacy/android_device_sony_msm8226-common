@@ -102,7 +102,7 @@ PRODUCT_PACKAGES += \
 
 #lights
 PRODUCT_PACKAGES += \
-    lights.yukon
+    lights.qcom
 
 # NFC packages
 PRODUCT_PACKAGES += \
