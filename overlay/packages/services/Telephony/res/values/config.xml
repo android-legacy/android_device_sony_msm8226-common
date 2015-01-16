@@ -21,7 +21,7 @@
      for different hardware or product builds. -->
 <resources>
     <!-- Show enabled lte option for lte device -->
-    <bool name="config_enabled_lte" translatable="true">true</bool>
+    <bool name="config_enabled_lte" translatable="false">true</bool>
 
     <!-- Determine whether calls to mute the microphone in PhoneUtils
          are routed through the android.media.AudioManager class (true) or through
