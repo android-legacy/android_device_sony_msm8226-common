@@ -72,10 +72,15 @@ PRODUCT_COPY_FILES += \
 #Audio
 PRODUCT_PACKAGES += \
     audio.primary.msm8226 \
+    audio_policy.msm8226
     audio.a2dp.default \
     audio.usb.default \
     audio.r_submix.default \
     libaudio-resampler \
+    audiod \
+    libqcompostprocbundle \
+    libqcomvisualizer \
+    libqcomvoiceprocessing \
     libacdbloader \
     libacdbmapper \
     libaudcal \
