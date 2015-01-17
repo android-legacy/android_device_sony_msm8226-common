@@ -152,7 +152,6 @@ PRODUCT_PACKAGES += \
 
 #OSS
 PRODUCT_PACKAGES += \
-    thermanager \
     wcnss_addr \
     bt_addr
 
