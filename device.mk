@@ -127,7 +127,7 @@ PRODUCT_PACKAGES += \
 
 # Power
 PRODUCT_PACKAGES += \
-    power.qcom
+    power.msm8226
 
 #GPS
 PRODUCT_PACKAGES += \
