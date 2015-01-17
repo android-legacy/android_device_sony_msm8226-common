@@ -76,20 +76,6 @@ PRODUCT_PACKAGES += \
     audio.usb.default \
     audio.r_submix.default \
     libaudio-resampler \
-    libacdbloader \
-    libacdbmapper \
-    libaudcal \
-    libdiag
-
-# for audio.primary.msm8226
-PRODUCT_PACKAGES += \
-    libtinyalsa \
-    libtinycompress \
-    libaudioroute \
-    audiod \
-    libqcompostprocbundle \
-    libqcomvisualizer \
-    libqcomvoiceprocessing \
     tinymix
 
 # Time
@@ -183,6 +169,10 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 # Platform specific properties
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.qualcomm.bt.hci_transport=smd
+
+
+PRODUCT_PROPERTY_OVERRIDES += \
+    media.stagefright.use-awesome=true
 
 # QC Perf
 PRODUCT_PROPERTY_OVERRIDES += \
