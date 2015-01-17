@@ -71,15 +71,12 @@ PRODUCT_COPY_FILES += \
 
 #Audio
 PRODUCT_PACKAGES += \
+    audio_policy.msm8226 \
     audio.primary.msm8226 \
     audio.a2dp.default \
     audio.usb.default \
     audio.r_submix.default \
-    libaudio-resampler \
-    libacdbloader \
-    libacdbmapper \
-    libaudcal \
-    libdiag
+    libaudio-resampler
 
 # for audio.primary.msm8226
 PRODUCT_PACKAGES += \
@@ -183,6 +180,10 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 # Platform specific properties
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.qualcomm.bt.hci_transport=smd
+
+
+PRODUCT_PROPERTY_OVERRIDES += \
+    media.stagefright.use-awesome=true
 
 # QC Perf
 PRODUCT_PROPERTY_OVERRIDES += \
