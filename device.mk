@@ -64,7 +64,9 @@ PRODUCT_COPY_FILES += \
 # NFC
 PRODUCT_COPY_FILES += \
     $(SONY_ROOT)/system/etc/libnfc-nxp.conf:system/etc/libnfc-nxp.conf \
+    $(SONY_ROOT)/system/etc/libnfc-brcm.conf:system/etc/libnfc-brcm.conf \
     $(SONY_ROOT)/system/etc/nfcee_access.xml:system/etc/nfcee_access.xml \
+    $(SONY_ROOT)/system/etc/nfc-nci.conf:system/etc/nfc-nci.conf \
     frameworks/native/data/etc/android.hardware.nfc.xml:system/etc/permissions/android.hardware.nfc.xml \
     frameworks/native/data/etc/android.hardware.nfc.hce.xml:system/etc/permissions/android.hardware.nfc.hce.xml \
     frameworks/native/data/etc/com.android.nfc_extras.xml:system/etc/permissions/com.android.nfc_extras.xml
@@ -98,11 +100,11 @@ PRODUCT_PACKAGES += \
 
 # NFC packages
 PRODUCT_PACKAGES += \
-    com.android.nfc_extras \
+    libnfc-nci \
+    libnfc_nci_jni \
     NfcNci \
     Tag \
-    nfc_nci.pn54x.default
-
+    com.android.nfc_extras
 # WIFI MAC update
 PRODUCT_PACKAGES += \
     mac-update
