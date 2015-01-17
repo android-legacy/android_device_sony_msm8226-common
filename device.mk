@@ -98,11 +98,11 @@ PRODUCT_PACKAGES += \
 
 # NFC packages
 PRODUCT_PACKAGES += \
-    com.android.nfc_extras \
+    libnfc-nci \
+    libnfc_nci_jni \
     NfcNci \
     Tag \
-    nfc_nci.pn54x.default
-
+    com.android.nfc_extras
 # WIFI MAC update
 PRODUCT_PACKAGES += \
     mac-update
