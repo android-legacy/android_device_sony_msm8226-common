@@ -107,9 +107,19 @@
 
          Must be overridden in platform specific overlays -->
     <integer-array name="config_autoBrightnessLevels">
+        <item>2</item>
+        <item>5</item>
+        <item>10</item>
+        <item>20</item>
         <item>50</item>
-        <item>600</item>
-        <item>900</item>
+        <item>100</item>
+        <item>200</item>
+        <item>500</item>
+        <item>1000</item>
+        <item>2000</item>
+        <item>3000</item>
+        <item>4000</item>
+        <item>5000</item>
     </integer-array>
 
     <!-- Array of output values for LCD backlight corresponding to the LUX values
@@ -117,10 +127,17 @@
          than the size of the config_autoBrightnessLevels array.
          This must be overridden in platform specific overlays -->
     <integer-array name="config_autoBrightnessLcdBacklightValues">
-        <item>100</item>  <!-- 0 -->
-        <item>150</item>  <!-- 50 -->
-        <item>250</item>  <!-- 600 -->
-        <item>255</item>  <!-- 900 -->
+        <item>24</item>
+        <item>25</item>
+        <item>49</item>
+        <item>72</item>
+        <item>95</item>
+        <item>118</item>
+        <item>142</item>
+        <item>165</item>
+        <item>195</item>
+        <item>225</item>
+        <item>255</item>
     </integer-array>
 
     <!-- DeskDock uses 90 degrees rotation and no accelerometer -->
