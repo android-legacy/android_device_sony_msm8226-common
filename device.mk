@@ -71,7 +71,6 @@ PRODUCT_COPY_FILES += \
 
 #Audio
 PRODUCT_PACKAGES += \
-    audio_policy.msm8226 \
     audio.primary.msm8226 \
     audio.a2dp.default \
     audio.usb.default \
@@ -190,11 +189,12 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Audio Configuration
 PRODUCT_PROPERTY_OVERRIDES += \
-    persist.audio.fluence.mode=endfire \
-    persist.audio.handset.mic=analog \
-    persist.audio.lowlatency.rec=false \
     ro.qc.sdk.audio.fluencetype=none \
-    lpa.decode=true \
+    persist.audio.fluence.voicecall=true \
+    persist.audio.fluence.voicerec=false \
+    persist.audio.fluence.speaker=true \
+    tunnel.audio.encode=true \
+    tunnel.decode=false \
     qcom.hw.aac.encoder=true
 
 # msm8226 common
