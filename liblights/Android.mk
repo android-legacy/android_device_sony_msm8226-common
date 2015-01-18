@@ -15,7 +15,7 @@
 LOCAL_PATH:= $(call my-dir)
 
 include $(CLEAR_VARS)
-
+ifeq ($(TARGET_PROVIDES_LIBLIGHT),true)
 ifeq ($(strip $(BOARD_HAS_DIM_BACKLIGHT)),true)
 LOCAL_CFLAGS += -DHAS_DIM_BACKLIGHT
 endif
@@ -26,3 +26,4 @@ LOCAL_MODULE := lights.qcom
 LOCAL_MODULE_TAGS := optional
 LOCAL_MODULE_PATH := $(TARGET_OUT_SHARED_LIBRARIES)/hw
 include $(BUILD_SHARED_LIBRARY)
+endif

@@ -90,6 +90,9 @@ BOARD_PROVIDES_LIBRIL := true
 TARGET_USES_ION := true
 USE_DEVICE_SPECIFIC_CAMERA := true
 
+# Light
+TARGET_PROVIDES_LIBLIGHT := true
+
 # Wi-Fi definitions for Qualcomm solution
 BOARD_HAS_QCOM_WLAN := true
 BOARD_HOSTAPD_DRIVER := NL80211
