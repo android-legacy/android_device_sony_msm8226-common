@@ -121,10 +121,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     hci_qcomm_init
 
-# Power
-PRODUCT_PACKAGES += \
-    power.msm8226
-
 #GPS
 PRODUCT_PACKAGES += \
     libloc_api_v02 \
