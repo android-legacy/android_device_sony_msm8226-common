@@ -12,9 +12,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# qcom common
-$(call inherit-product, device/sony/qcom-common/qcom-common.mk)
-
 SOMC_PLATFORM := yukon
 
 DEVICE_PACKAGE_OVERLAYS += \
@@ -31,7 +28,6 @@ PRODUCT_COPY_FILES += \
     $(SONY_ROOT)/system/etc/wifi/wpa_supplicant_overlay.conf:system/etc/wifi/wpa_supplicant_overlay.conf \
     $(SONY_ROOT)/system/etc/wifi/p2p_supplicant_overlay.conf:system/etc/wifi/p2p_supplicant_overlay.conf \
     $(SONY_ROOT)/system/etc/init.yukon.bt.sh:system/etc/init.yukon.bt.sh \
-    $(SONY_ROOT)/system/etc/init.yukon.wifi.sh:system/etc/init.yukon.wifi.sh \
     $(SONY_ROOT)/system/etc/gps.conf:system/etc/gps.conf \
     $(SONY_ROOT)/system/etc/audio_policy.conf:system/etc/audio_policy.conf \
     $(SONY_ROOT)/system/etc/media_codecs.xml:system/etc/media_codecs.xml \
@@ -56,7 +52,6 @@ PRODUCT_COPY_FILES += \
 
 # NFC
 PRODUCT_COPY_FILES += \
-    $(SONY_ROOT)/system/etc/libnfc-nxp.conf:system/etc/libnfc-nxp.conf \
     $(SONY_ROOT)/system/etc/nfcee_access.xml:system/etc/nfcee_access.xml \
     frameworks/native/data/etc/android.hardware.nfc.xml:system/etc/permissions/android.hardware.nfc.xml \
     frameworks/native/data/etc/android.hardware.nfc.hce.xml:system/etc/permissions/android.hardware.nfc.hce.xml \
@@ -65,7 +60,6 @@ PRODUCT_COPY_FILES += \
 #Audio
 PRODUCT_PACKAGES += \
     audio.a2dp.default \
-    audio_policy.msm8226 \
     audio.primary.msm8226 \
     audio.r_submix.default \
     audio.usb.default \
@@ -82,13 +76,8 @@ PRODUCT_PACKAGES += \
     libtinycompress \
     libaudioroute
 
-# Time
-PRODUCT_PACKAGES += \
-    libtime_genoff
-
 #GFX
 PRODUCT_PACKAGES += \
-    copybit.msm8226 \
     gralloc.msm8226 \
     hwcomposer.msm8226 \
     memtrack.msm8226 \
@@ -110,7 +99,7 @@ PRODUCT_PACKAGES += \
 
 # Power
 PRODUCT_PACKAGES += \
-    power.qcom
+    power.yukon
 
 #GPS
 PRODUCT_PACKAGES += \
@@ -122,10 +111,18 @@ PRODUCT_PACKAGES += \
 
 #Wifi
 PRODUCT_PACKAGES += \
+    libQWiFiSoftApCfg \
+    libqsap_sdk \
     hostapd \
     libwpa_client \
     wpa_supplicant \
     wpa_supplicant.conf
+
+PRODUCT_PROPERTY_OVERRIDES += \
+    wlan.driver.ath=0
+
+PRODUCT_COPY_FILES += \
+    $(SONY_ROOT)/system/etc/hostapd/hostapd_default.conf:system/etc/hostapd/hostapd_default.conf
 
 #Misc
 PRODUCT_PACKAGES += \
@@ -171,18 +168,3 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.vendor.extension_library=/vendor/lib/libqc-opt.so
 
-# Audio Configuration
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.qc.sdk.audio.fluencetype=fluence \
-    persist.audio.fluence.voicecall=true \
-    af.resampler.quality=4 \
-    audio.offload.buffer.size.kb=32 \
-    audio.offload.gapless.enabled=true \
-    use.voice.path.for.pcm.voip=true \
-    av.offload.enable=true \
-    av.streaming.offload.enable=true \
-    audio.offload.pcm.enable=true \
-    persist.sys.media.use-awesome=true
-
-# msm8226 common
-$(call inherit-product, vendor/sony/msm8226-common/msm8226-common-vendor.mk)

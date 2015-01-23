@@ -20,7 +20,6 @@ on early-init
     mount debugfs debugfs /sys/kernel/debug
 
     mkdir /firmware 0771 system system
-    chmod 666 /proc/cmdline
 
     # Set permissions for persist partition
     mkdir /persist 0771 system system
@@ -56,14 +55,6 @@ on fs
     mount_all ./fstab.yukon
     setprop ro.crypto.fuse_sdcard true
     write /sys/kernel/boot_adsp/boot 1
-    mount ext4 /dev/block/platform/msm_sdcc.1/by-name/persist /persist nosuid nodev barrier=1
-
-    restorecon_recursive /persist
-
-    mkdir /lta-label 0555 system system
-    mount ext4 /dev/block/platform/msm_sdcc.1/by-name/LTALabel /lta-label nosuid nodev noatime noexec ro barrier=0
-    chown system system /lta-label
-    chmod 0555 /lta-label
 
 # msm specific files that need to be created on /data
 on post-fs-data
@@ -74,19 +65,12 @@ on post-fs-data
 
     mkdir /data/misc/bluetooth 0770 bluetooth bluetooth
 
-    # Create directory used by radio subsystem
-    mkdir /data/radio 0770 radio radio
-
     # Create the directories used by the Wireless subsystem
     mkdir /data/misc/wifi 0770 wifi wifi
     mkdir /data/misc/wifi/sockets 0770 wifi wifi
     mkdir /data/misc/wifi/wpa_supplicant 0770 wifi wifi
     mkdir /data/misc/dhcp 0770 dhcp dhcp
     chown dhcp system /data/misc/dhcp
-
-    # Update WIFI MAC address
-    mkdir /data/misc/wifi/prima 0775 wifi wifi
-    exec /system/bin/mac-update
 
     #Create directory for hostapd
     mkdir /data/hostapd 0770 system wifi
@@ -159,6 +143,13 @@ on post-fs-data
     chmod 2770 /dev/socket/mpdecision
 
     setprop vold.post_fs_data_done 1
+
+on charger
+    # Booting modem
+    wait /dev/block/platform/msm_sdcc.1/by-name/system
+    mount ext4 /dev/block/platform/msm_sdcc.1/by-name/system /system ro barrier=1
+    start rmt_storage
+    start irsc_util
 
 on early-boot
     # set RLIMIT_MEMLOCK to 64MB
@@ -275,10 +266,6 @@ on boot
     # an ack packet comes out of order
     write /proc/sys/net/netfilter/nf_conntrack_tcp_be_liberal 1
 
-    # NFC local data and nfcee xml storage
-	mkdir /data/nfc 0770 nfc nfc
-    mkdir /data/nfc/param 0770 nfc nfc
-
     # Set the console loglevel to < KERN_INFO
     # Set the default message loglevel to KERN_INFO
     write /proc/sys/kernel/printk "6 6 1 7"
@@ -294,7 +281,7 @@ on boot
     write /sys/bus/msm_subsys/devices/subsys3/restart_level "related"
 
     #WCNSS enable
-    chown system system /dev/wcnss_wlan
+    write /dev/wcnss_wlan 1
 
 #SONY misc
 service ta_qmi_service /system/bin/ta_qmi_service
@@ -343,12 +330,6 @@ service thermanager /system/bin/thermanager /system/etc/thermanager.xml
     class main
     user root
     group root
-
-service wcnss_init /system/bin/sh /system/etc/init.yukon.wifi.sh
-    class main
-    user system
-    group system wifi
-    oneshot
 
 #WCNSS service
 service wcnss-service /system/bin/wcnss_service
@@ -447,3 +428,8 @@ on property:init.svc.bootanim=running
     # Clear Sony boot splash
     write /sys/class/graphics/fb0/blank 1
     write /sys/class/graphics/fb0/blank 0
+
+service charger /sbin/healthd -c
+    class charger
+    critical
+    seclabel u:r:healthd:s0
