@@ -12,9 +12,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# inherit from qcom-common
-include device/sony/qcom-common/BoardConfigCommon.mk
-
 include device/sony/common/BoardConfigCommon.mk
 
 TARGET_ARCH := arm
