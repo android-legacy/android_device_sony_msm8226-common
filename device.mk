@@ -81,10 +81,6 @@ PRODUCT_PACKAGES += \
     libtinycompress \
     libaudioroute
 
-# DTB Tool
-PRODUCT_PACKAGES += \
-    dtbToolAL
-
 # Time
 PRODUCT_PACKAGES += \
     libtime_genoff
