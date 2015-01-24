@@ -85,6 +85,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     libtime_genoff
 
+# DTB Tool
+PRODUCT_PACKAGES += \
+    dtbToolAOKP
+
 #GFX
 PRODUCT_PACKAGES += \
     copybit.msm8226 \
