@@ -100,7 +100,7 @@ PRODUCT_PACKAGES += \
 
 # Camera
 PRODUCT_PACKAGES += \
-    camera.msm8226
+    camera.yukon
 
 # Time
 PRODUCT_PACKAGES += \

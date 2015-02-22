@@ -98,9 +98,9 @@ LOCAL_C_INCLUDES += $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr/include
 LOCAL_C_INCLUDES += $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr/include/media
 LOCAL_ADDITIONAL_DEPENDENCIES := $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr
 
-LOCAL_C_INCLUDES += hardware/qcom/display-$(TARGET_QCOM_DISPLAY_VARIANT)/libgralloc \
-        hardware/qcom/display-$(TARGET_QCOM_DISPLAY_VARIANT)/libgenlock \
-        hardware/qcom/media-$(TARGET_QCOM_DISPLAY_VARIANT)/libstagefrighthw
+LOCAL_C_INCLUDES += hardware/qcom/display-caf-bfam/libgralloc \
+        hardware/qcom/display-caf-bfam/libgenlock \
+        hardware/qcom/media-caf-bfam/libstagefrighthw
 
 # if debug service layer and up , use stub camera!
 LOCAL_C_INCLUDES += \
@@ -117,9 +117,8 @@ LOCAL_SHARED_LIBRARIES += libgenlock libbinder libmmjpeg_interface libhardware
 LOCAL_CFLAGS += -include bionic/libc/kernel/common/linux/socket.h
 
 LOCAL_MODULE_PATH := $(TARGET_OUT_SHARED_LIBRARIES)/hw
-LOCAL_MODULE:= camera.$(TARGET_BOARD_PLATFORM)
+LOCAL_MODULE:= camera.$(SOMC_PLATFORM)
 LOCAL_MODULE_TAGS := optional
 include $(BUILD_SHARED_LIBRARY)
 
 LOCAL_PATH := $(OLD_LOCAL_PATH)
-
