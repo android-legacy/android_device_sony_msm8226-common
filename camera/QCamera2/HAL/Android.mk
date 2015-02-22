@@ -17,7 +17,7 @@ LOCAL_SRC_FILES := \
         QCameraThermalAdapter.cpp \
         wrapper/QualcommCamera.cpp
 
-LOCAL_CFLAGS = -Wall -Wextra -Wno-missing-field-initializers -Werror
+LOCAL_CFLAGS = -Wall -Werror
 #Debug logs are enabled
 #LOCAL_CFLAGS += -DDISABLE_DEBUG_LOG
 
@@ -31,8 +31,8 @@ endif
 LOCAL_C_INCLUDES := \
         $(LOCAL_PATH)/../stack/common \
         frameworks/native/include/media/openmax \
-        hardware/qcom/display-$(TARGET_QCOM_DISPLAY_VARIANT)/libgralloc \
-        hardware/qcom/media-$(TARGET_QCOM_DISPLAY_VARIANT)/libstagefrighthw \
+        hardware/qcom/display-caf-bfam/libgralloc \
+        hardware/qcom/media-caf-bfam/libstagefrighthw \
         $(LOCAL_PATH)/../../mm-image-codec/qexif \
         $(LOCAL_PATH)/../../mm-image-codec/qomx_core \
         $(LOCAL_PATH)/../util \
@@ -47,7 +47,7 @@ endif
 ifeq ($(TARGET_USE_VENDOR_CAMERA_EXT),true)
 LOCAL_C_INCLUDES += hardware/qcom/display/msm8974/libgralloc
 else
-LOCAL_C_INCLUDES += hardware/qcom/display-$(TARGET_QCOM_DISPLAY_VARIANT)/libgralloc
+LOCAL_C_INCLUDES += hardware/qcom/display-caf-bfam/libgralloc
 endif
 LOCAL_C_INCLUDES += $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr/include
 LOCAL_C_INCLUDES += $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr/include/media
@@ -57,7 +57,7 @@ LOCAL_SHARED_LIBRARIES := libcamera_client liblog libhardware libutils libcutils
 LOCAL_SHARED_LIBRARIES += libmmcamera_interface libmmjpeg_interface
 
 LOCAL_MODULE_PATH := $(TARGET_OUT_SHARED_LIBRARIES)/hw
-LOCAL_MODULE := camera.$(TARGET_BOARD_PLATFORM)
+LOCAL_MODULE := camera.$(SOMC_PLATFORM)
 LOCAL_MODULE_TAGS := optional
 
 include $(BUILD_SHARED_LIBRARY)
