@@ -79,6 +79,11 @@ PRODUCT_PACKAGES += \
     libtinycompress \
     libaudioroute
 
+
+#Time
+PRODUCT_PACKAGES += \
+   libtime_genoff
+
 #GFX
 PRODUCT_PACKAGES += \
     gralloc.msm8226 \
