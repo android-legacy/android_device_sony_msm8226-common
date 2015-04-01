@@ -164,6 +164,10 @@ PRODUCT_PACKAGES += \
     resize2fs \
     setup_fs
 
+# Set default USB interface
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
+    persist.sys.usb.config=mtp
+
 PRODUCT_PACKAGES += \
     librs_jni \
     com.android.future.usb.accessory
