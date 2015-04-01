@@ -71,7 +71,6 @@ COMMON_GLOBAL_CFLAGS += -DQCOM_HARDWARE
 TARGET_ENABLE_QC_AV_ENHANCEMENTS := true
 BOARD_USES_QC_TIME_SERVICES := true
 
-BOARD_USES_GENERIC_AUDIO := false
 BOARD_USES_ALSA_AUDIO := true
 
 TARGET_USES_ION := true
@@ -94,8 +93,6 @@ BOARD_USE_SONY_MACUPDATE := true
 
 # BT definitions for Qualcomm solution
 BLUETOOTH_HCI_USE_MCT := true
-BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/sony/msm8226-common/bluetooth
-BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_QCOM := true
 
 # GPS definitions for Qualcomm solution
