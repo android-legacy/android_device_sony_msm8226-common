@@ -173,10 +173,6 @@ PRODUCT_PACKAGES += \
     librs_jni \
     com.android.future.usb.accessory
 
-# Filesystem management tools
-PRODUCT_PACKAGES += \
-    e2fsck
-
 # Extract recovery ramdisks
 PRODUCT_PACKAGES += \
     extract_elf_ramdisk
