@@ -94,6 +94,17 @@
     <!-- Allow backlight brightness to go down to 10 -->
     <integer name="config_screenBrightnessSettingMinimum">10</integer>
 
+    <!-- Screen brightness used to dim the screen when the user activity
+                  timeout expires.  May be less than the minimum allowed brightness setting
+         that can be set by the user. -->
+    <integer name="config_screenBrightnessDim">10</integer>
+
+    <!-- Is the battery LED intrusive? Used to decide if there should be a disable option -->
+    <bool name="config_intrusiveBatteryLed">true</bool>
+
+    <!-- Can we change the battery color? -->
+    <bool name="config_multiColorBatteryLed">true</bool>
+
     <!-- DeskDock uses 90 degrees rotation and no accelerometer -->
     <integer name="config_deskDockRotation">1</integer>
     <bool name="config_deskDockEnablesAccelerometer">false</bool>
