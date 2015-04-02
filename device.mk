@@ -185,5 +185,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.qualcomm.bt.hci_transport=smd
 
+#QCOM
+PRODUCT_PROPERTY_OVERRIDES += \
+     com.qc.hardware=true \
+     qcom.hw.aac.encoder=true
+
 # msm8226 common
 $(call inherit-product, vendor/sony/msm8226-common/msm8226-common-vendor.mk)
