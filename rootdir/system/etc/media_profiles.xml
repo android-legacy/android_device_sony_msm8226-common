@@ -91,7 +91,7 @@
 <MediaSettings>
     <!-- Each camcorder profile defines a set of predefined configuration parameters -->
     <!-- Back Camera -->
-    <CamcorderProfiles cameraId="0" startOffsetMs="800">
+    <CamcorderProfiles cameraId="0" startOffsetMs="300">
 
     <EncoderProfile quality="low" fileFormat="3gp" duration="30">
       <Video codec="h264"
@@ -118,7 +118,7 @@
              sampleRate="48000"
              channels="2" />
     </EncoderProfile>
-<!-- MY_S for CTS Bug 888
+
     <EncoderProfile quality="qvga" fileFormat="mp4" duration="60">
       <Video codec="h264"
              bitRate="512000"
@@ -157,7 +157,7 @@
              sampleRate="48000"
              channels="2" />
     </EncoderProfile>
--->
+
     <EncoderProfile quality="720p" fileFormat="mp4" duration="30">
       <Video codec="h264"
              bitRate="14000000"
@@ -196,7 +196,7 @@
              sampleRate="8000"
              channels="1" />
     </EncoderProfile>
-<!-- MY_S for CTS Bug 888 
+
     <EncoderProfile quality="wvga" fileFormat="mp4" duration="30">
       <Video codec="h264"
              bitRate="2000000"
@@ -209,7 +209,7 @@
              sampleRate="48000"
              channels="2" />
     </EncoderProfile>
--->
+
     <EncoderProfile quality="vga" fileFormat="mp4" duration="30">
       <Video codec="h264"
              bitRate="2000000"
@@ -264,7 +264,7 @@
              sampleRate="8000"
              channels="1" />
     </EncoderProfile>
-<!-- MY_S for CTS Bug 888 
+
     <EncoderProfile quality="timelapsecif" fileFormat="mp4" duration="30">
       <Video codec="h264"
              bitRate="720000"
@@ -272,7 +272,7 @@
              height="288"
              frameRate="30" />
 
-      audio setting is ignored
+      <!-- audio setting is ignored -->
       <Audio codec="amrnb"
              bitRate="12200"
              sampleRate="8000"
@@ -287,7 +287,7 @@
              height="240"
              frameRate="30" />
 
-      audio setting is ignored
+      <!-- audio setting is ignored -->
       <Audio codec="amrnb"
              bitRate="12200"
              sampleRate="8000"
@@ -301,13 +301,13 @@
              height="240"
              frameRate="30" />
 
-      audio setting is ignored
+      <!-- audio setting is ignored -->
       <Audio codec="amrnb"
              bitRate="12200"
              sampleRate="8000"
              channels="1" />
     </EncoderProfile>
--->
+
     <EncoderProfile quality="timelapsevga" fileFormat="mp4" duration="30">
       <Video codec="h264"
              bitRate="2000000"
@@ -321,7 +321,7 @@
              sampleRate="8000"
              channels="1" />
     </EncoderProfile>
-<!-- MY_S for CTS Bug 888 
+
     <EncoderProfile quality="timelapsewvga" fileFormat="mp4" duration="30">
       <Video codec="h264"
              bitRate="2000000"
@@ -329,7 +329,7 @@
              height="480"
              frameRate="30" />
 
-      audio setting is ignored
+      <!-- audio setting is ignored -->
       <Audio codec="amrnb"
              bitRate="12200"
              sampleRate="8000"
@@ -343,13 +343,13 @@
              height="480"
              frameRate="30" />
 
-      audio setting is ignored
+      <!-- audio setting is ignored -->
       <Audio codec="amrnb"
              bitRate="12200"
              sampleRate="8000"
              channels="1" />
     </EncoderProfile>
--->
+
     <EncoderProfile quality="timelapse480p" fileFormat="mp4" duration="30">
       <Video codec="h264"
              bitRate="2000000"
@@ -399,7 +399,7 @@
 
     </CamcorderProfiles>
     <!-- Front Camera -->
-    <CamcorderProfiles cameraId="1" startOffsetMs="800">
+    <CamcorderProfiles cameraId="1" startOffsetMs="300">
 
     <EncoderProfile quality="low" fileFormat="3gp" duration="30">
       <Video codec="h264"
@@ -413,7 +413,7 @@
              sampleRate="8000"
              channels="1" />
     </EncoderProfile>
-<!-- MY_S for CTS Bug 888
+
     <EncoderProfile quality="high" fileFormat="mp4" duration="30">
       <Video codec="h264"
              bitRate="14000000"
@@ -478,7 +478,7 @@
              sampleRate="48000"
              channels="2" />
     </EncoderProfile>
--->
+
     <EncoderProfile quality="qcif" fileFormat="3gp" duration="30">
       <Video codec="h264"
              bitRate="192000"
@@ -491,7 +491,7 @@
              sampleRate="8000"
              channels="1" />
     </EncoderProfile>
-<!-- MY_S for CTS Bug 888
+
     <EncoderProfile quality="wvga" fileFormat="mp4" duration="30">
       <Video codec="h264"
              bitRate="2000000"
@@ -504,7 +504,7 @@
              sampleRate="48000"
              channels="2" />
     </EncoderProfile>
--->
+
      <EncoderProfile quality="vga" fileFormat="mp4" duration="30">
       <Video codec="h264"
              bitRate="2000000"
@@ -531,7 +531,7 @@
              sampleRate="8000"
              channels="1" />
     </EncoderProfile>
-<!-- MY_S for CTS Bug 888
+
     <EncoderProfile quality="timelapsehigh" fileFormat="mp4" duration="30">
       <Video codec="h264"
              bitRate="8000000"
@@ -539,13 +539,12 @@
              height="720"
              frameRate="30" />
 
-      audio setting is ignored
+      <!-- audio setting is ignored -->
       <Audio codec="aac"
              bitRate="96000"
              sampleRate="48000"
              channels="1" />
     </EncoderProfile>
--->
     <EncoderProfile quality="timelapseqcif" fileFormat="mp4" duration="30">
       <Video codec="h264"
                    bitRate="192000"
@@ -559,7 +558,7 @@
                    sampleRate="8000"
                    channels="1" />
     </EncoderProfile>
-<!-- MY_S for CTS
+
     <EncoderProfile quality="timelapsecif" fileFormat="mp4" duration="30">
       <Video codec="h264"
                    bitRate="1200000"
@@ -567,7 +566,7 @@
                    height="288"
                    frameRate="30" />
 
-      audio setting is ignored
+      <!-- audio setting is ignored -->
       <Audio codec="aac"
              bitRate="96000"
              sampleRate="48000"
@@ -581,7 +580,7 @@
              height="240"
              frameRate="30" />
 
-      audio setting is ignored
+      <!-- audio setting is ignored -->
       <Audio codec="amrnb"
              bitRate="12200"
              sampleRate="8000"
@@ -595,13 +594,13 @@
              height="240"
              frameRate="30" />
 
-      audio setting is ignored
+      <!-- audio setting is ignored -->
       <Audio codec="amrnb"
              bitRate="12200"
              sampleRate="8000"
              channels="1" />
     </EncoderProfile>
--->
+
     <EncoderProfile quality="timelapsevga" fileFormat="mp4" duration="30">
       <Video codec="h264"
              bitRate="2000000"
@@ -615,7 +614,7 @@
              sampleRate="8000"
              channels="1" />
     </EncoderProfile>
-<!-- MY_S for CTS
+
     <EncoderProfile quality="timelapsewvga" fileFormat="mp4" duration="30">
       <Video codec="h264"
              bitRate="2000000"
@@ -623,7 +622,7 @@
              height="480"
              frameRate="30" />
 
-      audio setting is ignored
+      <!-- audio setting is ignored -->
       <Audio codec="amrnb"
              bitRate="12200"
              sampleRate="8000"
@@ -637,7 +636,7 @@
              height="480"
              frameRate="30" />
 
-      audio setting is ignored
+      <!-- audio setting is ignored -->
       <Audio codec="amrnb"
              bitRate="12200"
              sampleRate="8000"
@@ -651,7 +650,7 @@
                    height="480"
                    frameRate="30" />
 
-      audio setting is ignored
+      <!-- audio setting is ignored -->
       <Audio codec="aac"
                    bitRate="96000"
                    sampleRate="48000"
@@ -665,13 +664,13 @@
                    height="720"
                    frameRate="30" />
 
-      audio setting is ignored
+      <!-- audio setting is ignored -->
       <Audio codec="aac"
                    bitRate="96000"
                    sampleRate="48000"
                    channels="1" />
     </EncoderProfile>
--->
+
         <ImageEncoding quality="95" />
         <ImageEncoding quality="80" />
         <ImageEncoding quality="70" />
