@@ -20,6 +20,7 @@ DEVICE_PACKAGE_OVERLAYS += \
     device/sony/msm8226-common/overlay
 
 SONY_ROOT:=device/sony/msm8226-common/rootdir
+COMMON_PATH:=device/sony/msm8226-common
 
 PRODUCT_COPY_FILES += \
     $(SONY_ROOT)/ueventd.yukon.rc:root/ueventd.yukon.rc \
@@ -32,7 +33,6 @@ PRODUCT_COPY_FILES += \
     $(SONY_ROOT)/system/etc/init.yukon.bt.sh:system/etc/init.yukon.bt.sh \
     $(SONY_ROOT)/system/etc/init.yukon.wifi.sh:system/etc/init.yukon.wifi.sh \
     $(SONY_ROOT)/system/etc/sec_config:system/etc/sec_config \
-    $(SONY_ROOT)/system/etc/gps.conf:system/etc/gps.conf \
     $(SONY_ROOT)/system/etc/audio_policy.conf:system/etc/audio_policy.conf \
     $(SONY_ROOT)/system/etc/media_codecs.xml:system/etc/media_codecs.xml \
     $(SONY_ROOT)/system/etc/media_profiles.xml:system/etc/media_profiles.xml \
@@ -117,11 +117,14 @@ PRODUCT_PACKAGES += \
     power.yukon
 
 #GPS
+PRODUCT_COPY_FILES += \
+    $(COMMON_PATH)/gps/flp.conf:system/etc/flp.conf \
+    $(COMMON_PATH)/gps/gps.conf:system/etc/gps.conf \
+    $(COMMON_PATH)/gps/izat.conf:system/etc/izat.conf \
+    $(COMMON_PATH)/gps/sap.conf:system/etc/sap.conf
+
 PRODUCT_PACKAGES += \
-    libloc_api_v02 \
-    libloc_adapter \
-    libloc_eng \
-    libgps.utils \
+    com.qualcomm.location \
     gps.msm8226
 
 #Wifi
