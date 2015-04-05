@@ -98,6 +98,9 @@ BOARD_HAVE_BLUETOOTH_QCOM := true
 # GPS definitions for Qualcomm solution
 TARGET_PROVIDES_GPS_LOC_API := true
 
+# NFC
+BOARD_NFC_CHIPSET := pn547
+
 # Lights HAL
 TARGET_PROVIDES_LIBLIGHT := true
 
